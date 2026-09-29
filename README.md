@@ -92,3 +92,9 @@ Cada mensagem começa com um tipo: `feat` (nova funcionalidade), `fix` (correç�
 `docs` (documentação), `style` (formatação), `refactor` (reorganização do código
 sem mudar o comportamento) ou `chore` (tarefas de manutenção).
 Exemplo: `docs: documentar o fluxo GitFlow no README`.
+
+## Como contribuir
+
+1. Crie uma branch a partir da `develop`: `git switch -c feature/nome-da-feature`.
+2. Faça commits semânticos (`feat:`, `fix:`, `docs:`).
+3. Envie a branch e abra um pull request para a `develop`, descrevendo o que mudou e por quê.
