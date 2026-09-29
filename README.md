@@ -1,5 +1,7 @@
 # Instituto Mãos que Ajudam — Projeto SPA (JavaScript)
 
+**Versão:** 1.0.0
+
 Site da ONG transformado em uma **Single Page Application**: um único
 `index.html` com cabeçalho e rodapé fixos, e o conteúdo de cada tela é carregado
 por JavaScript dentro de `<main id="app">`.
@@ -71,3 +73,22 @@ estático, sem configuração.
 
 `aria-current="page"` no menu, foco movido para o conteúdo a cada troca de tela,
 `role="status"` nas mensagens de sucesso, erros ligados aos campos.
+
+## Fluxo de trabalho (GitFlow)
+
+| Branch | Função |
+|--------|--------|
+| `main` | Versões estáveis, cada uma marcada com uma tag (ex.: `v1.0.0`) |
+| `develop` | Integração do código em desenvolvimento |
+| `feature/*` | Uma branch por funcionalidade, criada a partir da `develop` |
+| `release/*` | Preparação de uma versão, criada a partir da `develop` |
+| `hotfix/*` | Correções urgentes, criadas a partir da `main` |
+
+Nenhuma alteração é feita direto na `main`.
+
+### Commits semânticos
+
+Cada mensagem começa com um tipo: `feat` (nova funcionalidade), `fix` (correção),
+`docs` (documentação), `style` (formatação), `refactor` (reorganização do código
+sem mudar o comportamento) ou `chore` (tarefas de manutenção).
+Exemplo: `docs: documentar o fluxo GitFlow no README`.
