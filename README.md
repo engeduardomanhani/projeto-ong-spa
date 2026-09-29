@@ -98,3 +98,14 @@ Exemplo: `docs: documentar o fluxo GitFlow no README`.
 1. Crie uma branch a partir da `develop`: `git switch -c feature/nome-da-feature`.
 2. Faça commits semânticos (`feat:`, `fix:`, `docs:`).
 3. Envie a branch e abra um pull request para a `develop`, descrevendo o que mudou e por quê.
+
+## Instalação local
+
+**Pré-requisitos:** navegador atual, Git e VS Code com a extensão Live Server. O projeto não tem dependências nem etapa de build.
+
+1. Clone o repositório: `git clone https://github.com/engeduardomanhani/projeto-ong-spa.git`
+2. Entre na pasta e abra no VS Code: `cd projeto-ong-spa` e `code .`
+3. Troque para a branch de desenvolvimento: `git switch develop`
+4. Abra o `index.html` com o Live Server (botão direito → Open with Live Server).
+
+**Testes:** são manuais. Navegue pelo menu, envie o formulário e confira o painel.
