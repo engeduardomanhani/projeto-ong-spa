@@ -1,6 +1,6 @@
 # Instituto Mãos que Ajudam — Projeto SPA (JavaScript)
 
-**Versão:** 1.0.0
+**Versão:** 1.0.1
 
 Site da ONG transformado em uma **Single Page Application**: um único
 `index.html` com cabeçalho e rodapé fixos, e o conteúdo de cada tela é carregado
