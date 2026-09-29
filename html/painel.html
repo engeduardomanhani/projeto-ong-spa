@@ -1,0 +1,134 @@
+<section aria-labelledby="titulo-painel">
+  <h1 id="titulo-painel">Painel da ONG</h1>
+  <p>
+    Visão geral das campanhas, projetos e voluntários do Instituto Mãos que Ajudam,
+    para acompanhamento da equipe interna.
+  </p>
+</section>
+
+<!-- Resumo em números -->
+<section aria-labelledby="titulo-resumo">
+  <h2 id="titulo-resumo">Resumo geral</h2>
+  <div class="grade-cartoes">
+    <article class="cartao cartao-kpi grid-item">
+      <p class="kpi-numero">18</p>
+      <h3 class="kpi-rotulo">Projetos ativos</h3>
+    </article>
+    <article class="cartao cartao-kpi grid-item">
+      <p class="kpi-numero">452</p>
+      <h3 class="kpi-rotulo">Voluntários cadastrados</h3>
+    </article>
+    <article class="cartao cartao-kpi grid-item">
+      <p class="kpi-numero">R$ 24.680</p>
+      <h3 class="kpi-rotulo">Doações recebidas em setembro</h3>
+    </article>
+  </div>
+</section>
+
+<!-- Campanhas em andamento -->
+<section aria-labelledby="titulo-campanhas">
+  <h2 id="titulo-campanhas">Campanhas em andamento</h2>
+
+  <article class="campanha">
+    <div class="campanha-cabecalho">
+      <h3>Reforma da cozinha comunitária</h3>
+      <span class="badge badge-sucesso">No prazo</span>
+    </div>
+    <p>Arrecadação para reformar a cozinha usada pelo projeto Mesa Solidária.</p>
+    <div class="barra-progresso" role="progressbar" aria-valuenow="72" aria-valuemin="0" aria-valuemax="100" aria-label="72% da meta arrecadada">
+      <div class="barra-progresso-preenchida" style="width: 72%;"></div>
+    </div>
+    <p class="campanha-meta">R$ 14.400 de R$ 20.000 arrecadados (72%)</p>
+    <a class="botao-contorno" href="#/inicio/doar">Doar para esta campanha</a>
+  </article>
+
+  <article class="campanha">
+    <div class="campanha-cabecalho">
+      <h3>Kits escolares para o Educar para Transformar</h3>
+      <span class="badge badge-alerta">Atenção</span>
+    </div>
+    <p>Compra de material escolar para as turmas de reforço do segundo semestre.</p>
+    <div class="barra-progresso" role="progressbar" aria-valuenow="35" aria-valuemin="0" aria-valuemax="100" aria-label="35% da meta arrecadada">
+      <div class="barra-progresso-preenchida" style="width: 35%;"></div>
+    </div>
+    <p class="campanha-meta">R$ 3.500 de R$ 10.000 arrecadados (35%)</p>
+    <a class="botao-contorno" href="#/inicio/doar">Doar para esta campanha</a>
+  </article>
+
+  <article class="campanha">
+    <div class="campanha-cabecalho">
+      <h3>Mudas nativas para o Raízes Verdes</h3>
+      <span class="badge badge-sucesso">Concluída</span>
+    </div>
+    <p>Compra de mudas nativas para o plantio do próximo trimestre.</p>
+    <div class="barra-progresso" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" aria-label="100% da meta arrecadada">
+      <div class="barra-progresso-preenchida" style="width: 100%;"></div>
+    </div>
+    <p class="campanha-meta">R$ 6.000 de R$ 6.000 arrecadados (100%)</p>
+  </article>
+</section>
+
+<!-- Voluntários recentes -->
+<section aria-labelledby="titulo-voluntarios">
+  <h2 id="titulo-voluntarios">Voluntários cadastrados recentemente</h2>
+  <div class="tabela-wrapper">
+    <table class="tabela-voluntarios">
+      <caption>Últimos cadastros recebidos pelo formulário de voluntariado</caption>
+      <thead>
+        <tr>
+          <th scope="col">Nome</th>
+          <th scope="col">Área de interesse</th>
+          <th scope="col">Cidade</th>
+          <th scope="col">Status</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Ana Beatriz Souza</td>
+          <td>Educação</td>
+          <td>São Paulo/SP</td>
+          <td><span class="badge badge-sucesso">Ativo</span></td>
+        </tr>
+        <tr>
+          <td>Carlos Eduardo Lima</td>
+          <td>Meio ambiente</td>
+          <td>Guarulhos/SP</td>
+          <td><span class="badge badge-pendente">Pendente</span></td>
+        </tr>
+        <tr>
+          <td>Fernanda Alves</td>
+          <td>Alimentação</td>
+          <td>São Paulo/SP</td>
+          <td><span class="badge badge-sucesso">Ativo</span></td>
+        </tr>
+        <tr>
+          <td>João Pedro Martins</td>
+          <td>Capacitação profissional</td>
+          <td>Osasco/SP</td>
+          <td><span class="badge badge-pendente">Pendente</span></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!-- Cadastros salvos no localStorage deste navegador -->
+<section aria-labelledby="titulo-cadastros-salvos">
+  <h2 id="titulo-cadastros-salvos">Cadastros recebidos neste navegador</h2>
+  <p id="cadastros-vazio" class="ajuda" hidden>Nenhum cadastro foi enviado ainda. Preencha o formulário em "Seja Voluntário" para ver os dados aqui.</p>
+  <div class="tabela-wrapper" id="cadastros-tabela" hidden>
+    <table class="tabela-voluntarios">
+      <caption>Cadastros enviados pelo formulário e guardados no localStorage</caption>
+      <thead>
+        <tr>
+          <th scope="col">Nome</th>
+          <th scope="col">Participação</th>
+          <th scope="col">Cidade</th>
+          <th scope="col">Enviado em</th>
+        </tr>
+      </thead>
+      <tbody id="cadastros-corpo"></tbody>
+    </table>
+  </div>
+  <button type="button" class="botao-contorno" id="botao-limpar-cadastros" hidden>Apagar cadastros salvos</button>
+</section>

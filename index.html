@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Instituto Mãos que Ajudam</title>
+  <meta name="description" content="Instituto Mãos que Ajudam - ONG dedicada à educação, alimentação e sustentabilidade para comunidades em situação de vulnerabilidade.">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <header class="cabecalho">
+    <p class="logo">Instituto Mãos que Ajudam</p>
+    <button type="button" class="botao-menu" id="botao-menu"
+            aria-expanded="false" aria-controls="menu-navegacao"
+            aria-label="Abrir menu de navegação">
+      <span class="icone-hamburguer" aria-hidden="true"></span>
+    </button>
+    <nav class="navegacao-principal" aria-label="Navegação principal">
+      <ul id="menu-navegacao">
+        <li><a href="#/inicio" data-rota>Início</a></li>
+        <li class="tem-submenu">
+          <a href="#/projetos" data-rota>Projetos Sociais</a>
+          <button type="button" class="botao-submenu" aria-expanded="false"
+                  aria-label="Abrir submenu de Projetos Sociais">
+            <span aria-hidden="true">▾</span>
+          </button>
+          <ul class="submenu">
+            <li><a href="#/projetos/educar">Educar para Transformar</a></li>
+            <li><a href="#/projetos/mesa">Mesa Solidária</a></li>
+            <li><a href="#/projetos/raizes">Raízes Verdes</a></li>
+            <li><a href="#/projetos/futuro">Futuro em Ação</a></li>
+          </ul>
+        </li>
+        <li><a href="#/cadastro" data-rota>Seja Voluntário</a></li>
+        <li><a href="#/painel" data-rota>Painel da ONG</a></li>
+        <li><a href="#/inicio/doar">Doar</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- Único ponto de injeção: o router coloca aqui o template de cada tela -->
+  <main id="app" tabindex="-1"></main>
+
+  <footer class="rodape">
+    <p>Instituto Mãos que Ajudam — CNPJ 00.000.000/0001-00</p>
+    <p>Rua da Solidariedade, 123 — São Paulo/SP</p>
+    <p>
+      <a href="mailto:contato@maosqueajudam.org">contato@maosqueajudam.org</a> ·
+      <a href="tel:+551140028922">(11) 4002-8922</a>
+    </p>
+    <p>&copy; 2026 Instituto Mãos que Ajudam. Todos os direitos reservados.</p>
+    <p class="creditos-fotos">
+      Fotos: Hayes, Nathan Dumlao, Joel Muniz, Blake Wisz e Poddar Group of Institutions,
+      via <a href="https://unsplash.com" target="_blank" rel="noopener noreferrer">Unsplash</a>.
+    </p>
+  </footer>
+
+  <script type="module" src="js/main.js"></script>
+</body>
+</html>

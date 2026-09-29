@@ -1,0 +1,768 @@
+/* ==========================================================================
+   INSTITUTO MÃOS QUE AJUDAM — DESIGN SYSTEM
+   Variáveis de cor, tipografia e espaçamento, seguidas dos componentes
+   que usam essas variáveis. Organizado por seções para facilitar manutenção.
+   ========================================================================== */
+
+/* ---------- 1. Variáveis (Design Tokens) ---------- */
+:root {
+  /* Cores primárias: identidade da marca (azul institucional) */
+  --cor-primaria: #0b63c5;
+  --cor-primaria-escura: #084a94;
+  --cor-primaria-clara: #e8f1fc;
+
+  /* Cores secundárias: destaque e chamadas de ação (laranja solidário) */
+  --cor-secundaria: #e8722c;
+  --cor-secundaria-escura: #c65a1a;
+  --cor-secundaria-clara: #fdece0;
+
+  /* Cor de apoio: confirmações e sucesso */
+  --cor-sucesso: #1b7f3b;
+  --cor-sucesso-clara: #eaf6ee;
+
+  /* Cor de apoio: erros e validação */
+  --cor-erro: #b3261e;
+
+  /* Tons neutros: texto, bordas e fundos */
+  --cor-neutro-900: #1f2933; /* texto principal */
+  --cor-neutro-700: #4a5561; /* texto secundário */
+  --cor-neutro-400: #7d8a96; /* bordas */
+  --cor-neutro-200: #c3ccd5; /* bordas claras */
+  --cor-neutro-100: #f4f6f8; /* fundo alternado */
+  --cor-neutro-000: #ffffff; /* fundo principal */
+
+  /* Tipografia: família e escala de tamanhos (5 níveis) */
+  --fonte-base: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  --fs-h1: 2.25rem;
+  --fs-h2: 1.5rem;
+  --fs-h3: 1.125rem;
+  --fs-corpo: 1rem;
+  --fs-pequeno: 0.875rem;
+
+  /* Espaçamentos: escala modular baseada em múltiplos de 4px */
+  --espaco-1: 0.25rem;
+  --espaco-2: 0.5rem;
+  --espaco-3: 1rem;
+  --espaco-4: 1.5rem;
+  --espaco-5: 2rem;
+  --espaco-6: 3rem;
+
+  --raio-borda: 8px;
+  --sombra-cartao: 0 1px 3px rgba(31, 41, 51, 0.12);
+  --largura-maxima: 1100px;
+}
+
+/* ---------- 2. Reset e base ---------- */
+*, *::before, *::after { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  font-family: var(--fonte-base);
+  font-size: var(--fs-corpo);
+  line-height: 1.5;
+  color: var(--cor-neutro-900);
+  background: var(--cor-neutro-000);
+}
+
+h1, h2, h3 { line-height: 1.25; margin: 0 0 var(--espaco-3); }
+h1 { font-size: var(--fs-h1); }
+h2 { font-size: var(--fs-h2); }
+h3 { font-size: var(--fs-h3); }
+p { margin: 0 0 var(--espaco-3); }
+img { max-width: 100%; height: auto; display: block; }
+a { color: var(--cor-primaria); }
+
+main {
+  max-width: var(--largura-maxima);
+  margin: 0 auto;
+  padding: var(--espaco-4);
+}
+
+/* ---------- 3. Cabeçalho e navegação (Flexbox) ---------- */
+.cabecalho {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--espaco-3);
+  padding: var(--espaco-3) var(--espaco-4);
+  border-bottom: 1px solid var(--cor-neutro-200);
+}
+
+.logo {
+  margin: 0;
+  font-size: var(--fs-h3);
+  font-weight: 700;
+  color: var(--cor-primaria-escura);
+}
+
+#menu-navegacao {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--espaco-4);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.navegacao-principal a {
+  text-decoration: none;
+  color: var(--cor-neutro-700);
+  font-weight: 600;
+  padding: var(--espaco-1) 0;
+  border-bottom: 2px solid transparent;
+}
+
+.navegacao-principal a:hover,
+.navegacao-principal a:focus-visible { color: var(--cor-primaria); }
+
+.navegacao-principal a[aria-current="page"] {
+  color: var(--cor-primaria);
+  border-bottom-color: var(--cor-primaria);
+}
+
+/* Botão hambúrguer: escondido em telas largas, só aparece no breakpoint mobile (seção 11) */
+.botao-menu {
+  display: none;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  padding: 0;
+  background: transparent;
+  border: 1px solid var(--cor-neutro-200);
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.botao-menu:hover,
+.botao-menu:focus-visible {
+  border-color: var(--cor-primaria);
+}
+
+/* Ícone de 3 linhas feito só com CSS: a linha do meio é o próprio elemento,
+   as linhas de cima e de baixo são geradas via ::before/::after. */
+.icone-hamburguer,
+.icone-hamburguer::before,
+.icone-hamburguer::after {
+  display: block;
+  width: 20px;
+  height: 2px;
+  background: var(--cor-neutro-900);
+  border-radius: 2px;
+  transition: transform 0.2s ease, opacity 0.2s ease;
+}
+
+.icone-hamburguer {
+  position: relative;
+}
+
+.icone-hamburguer::before,
+.icone-hamburguer::after {
+  content: "";
+  position: absolute;
+  left: 0;
+}
+
+.icone-hamburguer::before { top: -6px; }
+.icone-hamburguer::after { top: 6px; }
+
+/* Quando o menu está aberto (aria-expanded="true"), o ícone vira um "X" */
+.botao-menu[aria-expanded="true"] .icone-hamburguer {
+  background: transparent;
+}
+
+.botao-menu[aria-expanded="true"] .icone-hamburguer::before {
+  transform: translateY(6px) rotate(45deg);
+}
+
+.botao-menu[aria-expanded="true"] .icone-hamburguer::after {
+  transform: translateY(-6px) rotate(-45deg);
+}
+
+/* ---------- 4b. Submenu (dropdown) de "Projetos Sociais" ---------- */
+.navegacao-principal .tem-submenu {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.botao-submenu {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin-left: var(--espaco-1);
+  padding: 0 var(--espaco-1);
+  background: transparent;
+  border: 0;
+  color: var(--cor-neutro-700);
+  font: inherit;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+
+.tem-submenu.submenu-aberto .botao-submenu {
+  transform: rotate(180deg);
+}
+
+.navegacao-principal .submenu {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  min-width: 220px;
+  margin: var(--espaco-1) 0 0;
+  padding: var(--espaco-2) 0;
+  list-style: none;
+  background: var(--cor-neutro-000);
+  border: 1px solid var(--cor-neutro-200);
+  border-radius: var(--raio-borda);
+  box-shadow: var(--sombra-cartao);
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(8px);
+  transition: opacity 0.15s ease, transform 0.15s ease, visibility 0.15s ease;
+  z-index: 20;
+}
+
+.navegacao-principal .submenu a {
+  display: block;
+  padding: var(--espaco-2) var(--espaco-3);
+  white-space: nowrap;
+  border-bottom: 0;
+}
+
+/* Em telas largas, quem usa mouse abre o submenu passando o cursor (:hover)
+   ou navegando por teclado até um link/botão dentro do item (:focus-within).
+   Quem clica no botão de seta também abre via classe .submenu-aberto,
+   o que cobre toque e clique sem precisar de hover. */
+.navegacao-principal .tem-submenu:hover > .submenu,
+.navegacao-principal .tem-submenu:focus-within > .submenu,
+.navegacao-principal .tem-submenu.submenu-aberto > .submenu {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+/* ---------- 4. Hero / chamadas de destaque ---------- */
+.hero {
+  text-align: center;
+  padding: var(--espaco-6) var(--espaco-4);
+  margin: var(--espaco-5) 0;
+  background: var(--cor-primaria-clara);
+  border-radius: var(--raio-borda);
+}
+
+.botao {
+  display: inline-block;
+  margin-top: var(--espaco-2);
+  padding: var(--espaco-2) var(--espaco-4);
+  background: var(--cor-secundaria);
+  color: var(--cor-neutro-000);
+  text-decoration: none;
+  font-weight: 700;
+  border-radius: var(--raio-borda);
+  transition: background 0.15s ease;
+}
+
+.botao:hover,
+.botao:focus-visible { background: var(--cor-secundaria-escura); }
+
+/* Estado "pressionado": leve encolhimento dá a sensação física de clique */
+.botao:active {
+  transform: scale(0.97);
+}
+
+/* Estado desabilitado: menos opacidade e cursor indicando que não é clicável */
+.botao:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  pointer-events: none;
+  transform: none;
+}
+
+/* ---------- 5. Sistema de Grid — 12 colunas ---------- */
+.grade-cartoes,
+.lista-projetos {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  gap: var(--espaco-4);
+  margin: var(--espaco-4) 0;
+}
+
+/* Item padrão: ocupa 4 das 12 colunas (3 itens por linha em telas grandes) */
+.grid-item {
+  grid-column: span 4;
+}
+
+.cartao {
+  padding: var(--espaco-4);
+  background: var(--cor-neutro-100);
+  border-radius: var(--raio-borda);
+  box-shadow: var(--sombra-cartao);
+}
+
+.cartao h3 { color: var(--cor-primaria-escura); }
+
+/* ---------- 6. Lista de projetos: itens usam .grid-item (definido acima) ---------- */
+
+.projeto {
+  overflow: hidden;
+  background: var(--cor-neutro-000);
+  border: 1px solid var(--cor-neutro-200);
+  border-radius: var(--raio-borda);
+  box-shadow: var(--sombra-cartao);
+}
+
+.projeto img { aspect-ratio: 16 / 10; object-fit: cover; }
+.projeto-conteudo { padding: var(--espaco-4); }
+.projeto-conteudo h2 { font-size: var(--fs-h3); color: var(--cor-primaria-escura); }
+
+.imagem-destaque {
+  display: block;
+  max-width: 100%;
+  height: auto;
+  border-radius: var(--raio-borda);
+  margin: var(--espaco-4) 0;
+}
+
+/* ---------- 7. Formulário de cadastro (Flexbox) ---------- */
+#form-cadastro { max-width: 720px; margin-top: var(--espaco-4); }
+
+#form-cadastro fieldset {
+  border: 1px solid var(--cor-neutro-200);
+  border-radius: var(--raio-borda);
+  padding: var(--espaco-3) var(--espaco-4) var(--espaco-4);
+  margin: 0 0 var(--espaco-4);
+}
+
+#form-cadastro legend {
+  font-weight: 700;
+  padding: 0 var(--espaco-2);
+  color: var(--cor-primaria-escura);
+}
+
+.campo {
+  display: flex;
+  flex-direction: column;
+  gap: var(--espaco-1);
+  margin-bottom: var(--espaco-3);
+}
+
+.campo label { font-weight: 600; }
+
+.campo input, .campo select, .campo textarea {
+  font: inherit;
+  color: inherit;
+  padding: var(--espaco-2) var(--espaco-3);
+  border: 1px solid var(--cor-neutro-400);
+  border-radius: 6px;
+  background: var(--cor-neutro-000);
+}
+
+.campo textarea { resize: vertical; }
+
+.campo input:focus, .campo select:focus, .campo textarea:focus,
+.opcao input:focus-visible {
+  outline: 3px solid var(--cor-primaria);
+  outline-offset: 2px;
+}
+
+.campo input:user-invalid, .campo select:user-invalid { border-color: var(--cor-erro); }
+
+/* Feedback de sucesso: só depois que a pessoa interage com o campo
+   (:user-valid), para não pintar tudo de verde antes de ela digitar nada. */
+.campo input:user-valid, .campo select:user-valid { border-color: var(--cor-sucesso); }
+
+.ajuda { font-size: var(--fs-pequeno); color: var(--cor-neutro-700); }
+
+.linha { display: grid; grid-template-columns: 1fr 1fr; gap: 0 var(--espaco-3); }
+
+.opcao { display: flex; align-items: flex-start; gap: var(--espaco-2); margin-bottom: var(--espaco-2); }
+.opcao input { margin-top: 0.3rem; }
+
+button.botao { border: 0; cursor: pointer; font: inherit; }
+
+.mensagem-sucesso {
+  margin-top: var(--espaco-3);
+  padding: var(--espaco-3);
+  border-left: 4px solid var(--cor-sucesso);
+  border-radius: 6px;
+  background: var(--cor-sucesso-clara);
+}
+
+/* ---------- 8. Painel da ONG (KPIs, campanhas, tabela) ---------- */
+.cartao-kpi {
+  text-align: center;
+}
+
+.kpi-numero {
+  margin: 0 0 var(--espaco-1);
+  font-size: var(--fs-h1);
+  font-weight: 700;
+  color: var(--cor-primaria-escura);
+}
+
+.kpi-rotulo {
+  margin: 0;
+  color: var(--cor-neutro-700);
+  font-size: var(--fs-pequeno);
+}
+
+.campanha {
+  padding: var(--espaco-4);
+  margin-bottom: var(--espaco-3);
+  background: var(--cor-neutro-000);
+  border: 1px solid var(--cor-neutro-200);
+  border-radius: var(--raio-borda);
+  box-shadow: var(--sombra-cartao);
+}
+
+.campanha-cabecalho {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--espaco-2);
+  margin-bottom: var(--espaco-1);
+}
+
+.campanha-cabecalho h3 {
+  margin: 0;
+}
+
+.campanha-meta {
+  margin: var(--espaco-1) 0 0;
+  font-size: var(--fs-pequeno);
+  color: var(--cor-neutro-700);
+}
+
+.barra-progresso {
+  height: 10px;
+  margin-top: var(--espaco-2);
+  background: var(--cor-neutro-200);
+  border-radius: 999px;
+  overflow: hidden;
+}
+
+.barra-progresso-preenchida {
+  height: 100%;
+  background: var(--cor-primaria);
+  border-radius: 999px;
+}
+
+.badge {
+  display: inline-block;
+  padding: var(--espaco-1) var(--espaco-2);
+  font-size: var(--fs-pequeno);
+  font-weight: 600;
+  border-radius: 999px;
+  white-space: nowrap;
+}
+
+.badge-sucesso {
+  color: var(--cor-sucesso);
+  background: var(--cor-sucesso-clara);
+}
+
+.badge-alerta {
+  color: var(--cor-secundaria-escura);
+  background: var(--cor-secundaria-clara);
+}
+
+.badge-pendente {
+  color: var(--cor-neutro-700);
+  background: var(--cor-neutro-100);
+}
+
+.tabela-wrapper {
+  overflow-x: auto;
+  margin: var(--espaco-4) 0;
+}
+
+.tabela-voluntarios {
+  width: 100%;
+  border-collapse: collapse;
+  min-width: 480px;
+}
+
+.tabela-voluntarios caption {
+  text-align: left;
+  margin-bottom: var(--espaco-2);
+  font-size: var(--fs-pequeno);
+  color: var(--cor-neutro-700);
+}
+
+.tabela-voluntarios th,
+.tabela-voluntarios td {
+  padding: var(--espaco-2) var(--espaco-3);
+  text-align: left;
+  border-bottom: 1px solid var(--cor-neutro-200);
+}
+
+.tabela-voluntarios th {
+  background: var(--cor-neutro-100);
+  font-size: var(--fs-pequeno);
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+  color: var(--cor-neutro-700);
+}
+
+/* ---------- 9. Doações ---------- */
+.cartao-doacao code {
+  display: block;
+  padding: var(--espaco-2);
+  margin: var(--espaco-2) 0;
+  background: var(--cor-neutro-100);
+  border-radius: 6px;
+  font-size: var(--fs-pequeno);
+  word-break: break-all;
+}
+
+.chave-pix {
+  display: flex;
+  flex-direction: column;
+  gap: var(--espaco-2);
+  align-items: flex-start;
+}
+
+.chave-pix code {
+  width: 100%;
+}
+
+.botao-contorno {
+  display: inline-block;
+  padding: var(--espaco-1) var(--espaco-3);
+  background: transparent;
+  color: var(--cor-primaria);
+  border: 1px solid var(--cor-primaria);
+  border-radius: var(--raio-borda);
+  font: inherit;
+  font-weight: 600;
+  text-decoration: none;
+  cursor: pointer;
+  transition: background 0.15s ease, color 0.15s ease;
+}
+
+.botao-contorno:hover,
+.botao-contorno:focus-visible {
+  background: var(--cor-primaria);
+  color: var(--cor-neutro-000);
+}
+
+.botao-contorno:active {
+  transform: scale(0.97);
+}
+
+.botao-contorno:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  pointer-events: none;
+  transform: none;
+}
+
+.mensagem-copiado {
+  position: fixed;
+  left: 50%;
+  bottom: var(--espaco-5);
+  transform: translateX(-50%) translateY(12px);
+  margin: 0;
+  padding: var(--espaco-2) var(--espaco-4);
+  background: var(--cor-sucesso);
+  color: var(--cor-neutro-000);
+  font-size: var(--fs-pequeno);
+  font-weight: 600;
+  border-radius: 999px;
+  box-shadow: 0 4px 12px rgba(31, 41, 51, 0.25);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.2s ease, transform 0.2s ease;
+  z-index: 50;
+}
+
+.mensagem-copiado:not([hidden]) {
+  opacity: 1;
+  transform: translateX(-50%) translateY(0);
+}
+
+/* ---------- 10. Rodapé ---------- */
+.rodape {
+  padding: var(--espaco-4);
+  margin-top: var(--espaco-5);
+  border-top: 1px solid var(--cor-neutro-200);
+  color: var(--cor-neutro-700);
+  font-size: var(--fs-pequeno);
+  text-align: center;
+}
+
+.rodape a { color: var(--cor-neutro-700); }
+.creditos-fotos { margin-top: var(--espaco-2); color: var(--cor-neutro-400); }
+
+/* ---------- 11. Responsivo — 5 breakpoints ---------- */
+
+/* Breakpoint 1 — telas grandes/desktops pequenos (≤1200px):
+   o grid de 12 colunas passa de 3 para 2 itens por linha. */
+@media (max-width: 1200px) {
+  .grid-item {
+    grid-column: span 6;
+  }
+}
+
+/* Breakpoint 2 — tablets em paisagem (≤992px):
+   reduz o respiro geral do conteúdo e do hero. */
+@media (max-width: 992px) {
+  main {
+    padding: var(--espaco-3);
+  }
+
+  .hero {
+    padding: var(--espaco-5) var(--espaco-3);
+  }
+}
+
+/* Breakpoint 3 — tablets em retrato (≤768px):
+   o grid de 12 colunas passa a ocupar 1 item por linha (span 12). */
+@media (max-width: 768px) {
+  .grid-item {
+    grid-column: span 12;
+  }
+}
+
+/* Breakpoint 4 — celulares (≤576px):
+   cabeçalho empilha, o menu principal vira um painel condensado atrás do
+   botão hambúrguer, e a tipografia reduz. */
+@media (max-width: 576px) {
+  .cabecalho {
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  /* Mostra o botão hambúrguer só nesta faixa de tela */
+  .botao-menu {
+    display: inline-flex;
+  }
+
+  /* A <nav> passa a ocupar a largura toda, abaixo do cabeçalho */
+  .navegacao-principal {
+    flex-basis: 100%;
+  }
+
+  /* Por padrão o menu fica fechado: max-height 0 + overflow hidden.
+     A classe .menu-aberto (aplicada por js/menu.js ao clicar no hambúrguer)
+     libera a altura e a transição cria o efeito de "abrir para baixo". */
+  .navegacao-principal ul#menu-navegacao {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.25s ease;
+  }
+
+  .navegacao-principal ul#menu-navegacao.menu-aberto {
+    max-height: 500px;
+  }
+
+  .navegacao-principal a {
+    display: block;
+    padding: var(--espaco-2) 0;
+    border-bottom: 1px solid var(--cor-neutro-100);
+  }
+
+  .navegacao-principal .tem-submenu {
+    flex-wrap: wrap;
+  }
+
+  .navegacao-principal .tem-submenu > a {
+    flex: 1;
+    border-bottom: 0;
+  }
+
+  /* No mobile o submenu deixa de ser um dropdown posicionado (position: absolute)
+     e passa a empurrar o conteúdo abaixo do item pai, controlado pela mesma
+     lógica de max-height usada no menu principal. */
+  .navegacao-principal .submenu {
+    position: static;
+    flex-basis: 100%;
+    opacity: 1;
+    visibility: visible;
+    transform: none;
+    border: 0;
+    box-shadow: none;
+    margin: 0 0 0 var(--espaco-3);
+    padding: 0;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.25s ease;
+  }
+
+  .navegacao-principal .tem-submenu.submenu-aberto > .submenu {
+    max-height: 300px;
+    padding: var(--espaco-1) 0 var(--espaco-2);
+  }
+
+  .navegacao-principal .submenu a {
+    border-bottom: 0;
+    padding: var(--espaco-1) 0;
+  }
+
+  .linha {
+    grid-template-columns: 1fr;
+  }
+
+  :root {
+    --fs-h1: 1.75rem;
+    --fs-h2: 1.25rem;
+  }
+}
+
+/* Breakpoint 5 — celulares pequenos (≤400px):
+   aperta ainda mais os espaçamentos e a tipografia. */
+@media (max-width: 400px) {
+  :root {
+    --fs-h1: 1.5rem;
+    --fs-h3: 1rem;
+    --espaco-4: 1.25rem;
+    --espaco-5: 1.5rem;
+    --espaco-6: 2rem;
+  }
+
+  .campanha-cabecalho {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
+
+
+/* ==========================================================================
+   Etapa SPA: feedback de validação e ajustes da área principal
+   ========================================================================== */
+
+/* O <main> recebe foco por script a cada troca de rota; não precisa de contorno */
+#app:focus { outline: none; }
+
+.erro-campo {
+  margin: 0.25rem 0 0;
+  font-size: var(--fs-pequeno);
+  font-weight: 600;
+  color: var(--cor-erro);
+}
+
+.erro-campo::before { content: "⚠ "; }
+
+.campo input[aria-invalid="true"],
+.campo select[aria-invalid="true"],
+.campo textarea[aria-invalid="true"] {
+  border-color: var(--cor-erro);
+  border-width: 2px;
+}
+
+fieldset.tem-erro {
+  border-color: var(--cor-erro);
+}
+
+.mensagem-sucesso.mensagem-erro {
+  border-left-color: var(--cor-erro);
+  background: #fdeceb;
+  color: var(--cor-erro);
+}
