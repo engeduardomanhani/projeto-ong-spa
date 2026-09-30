@@ -766,3 +766,41 @@ fieldset.tem-erro {
   background: #fdeceb;
   color: var(--cor-erro);
 }
+
+/* ---------- Acessibilidade: foco visível ---------- */
+a:focus-visible,
+button:focus-visible {
+  outline: 3px solid var(--cor-primaria);
+  outline-offset: 2px;
+}
+
+/* ---------- Contraste: laranja mais escuro no tema claro ---------- */
+/* Branco sobre #e8722c dava 3,05:1; com #b5501a dá 5,09:1 */
+:root {
+  --cor-secundaria: #b5501a;
+  --cor-secundaria-escura: #a94a14;
+}
+
+/* ---------- Modo escuro: segue a preferência do sistema ---------- */
+@media (prefers-color-scheme: dark) {
+  :root {
+    color-scheme: dark;
+    --cor-primaria: #6db3ff;
+    --cor-primaria-escura: #9cc9ff;
+    --cor-primaria-clara: #16283d;
+    --cor-secundaria: #e8722c;
+    --cor-secundaria-escura: #f08a4b;
+    --cor-secundaria-clara: #3a2415;
+    --cor-sucesso: #5fd38a;
+    --cor-sucesso-clara: #12301d;
+    --cor-erro: #ff8a80;
+    --cor-neutro-900: #eef2f5;
+    --cor-neutro-700: #b8c2cc;
+    --cor-neutro-400: #8a97a3;
+    --cor-neutro-200: #3a4652;
+    --cor-neutro-100: #1c242d;
+    --cor-neutro-000: #12181f;
+  }
+
+  .mensagem-sucesso.mensagem-erro { background: #3a1613; }
+}
