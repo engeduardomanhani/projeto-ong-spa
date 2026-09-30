@@ -61,6 +61,7 @@ function obterAreaDeErro(campo) {
     area = document.createElement('p');
     area.id = id;
     area.className = 'erro-campo';
+        area.setAttribute('role', 'alert');
     area.hidden = true;
     ancora.appendChild(area);
   }
