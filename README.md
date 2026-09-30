@@ -109,3 +109,13 @@ Exemplo: `docs: documentar o fluxo GitFlow no README`.
 4. Abra o `index.html` com o Live Server (botão direito → Open with Live Server).
 
 **Testes:** são manuais. Navegue pelo menu, envie o formulário e confira o painel.
+
+## Acessibilidade
+
+- **Landmarks e estrutura:** `<header>`, `<nav>`, `<main>` e `<footer>`; cada tela usa `<section aria-labelledby>` com um `<h1>`.
+- **Menu:** botões com `aria-expanded`, `aria-controls` e `aria-label`; `aria-current="page"` no link da tela atual.
+- **Teclado:** contorno de foco visível (`:focus-visible`) em links, botões e campos; o submenu abre também com `:focus-within`.
+- **SPA:** o foco é movido para o conteúdo e o título da aba é atualizado a cada troca de tela.
+- **Formulário:** `label`, `fieldset`/`legend`, erros ligados aos campos (`aria-invalid` + `aria-describedby`), foco no primeiro erro.
+- **Mensagens e progresso:** `role="status"` nas confirmações e `role="progressbar"` nas campanhas.
+- **Cores e tema:** contraste mínimo de 4,5:1 (WCAG AA) e modo escuro automático via `prefers-color-scheme`.
