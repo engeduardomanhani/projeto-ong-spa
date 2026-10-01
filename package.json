@@ -2,7 +2,7 @@
   "name": "projeto-ong",
   "version": "1.0.1",
    "private": true,
-  "description": "**Versão:** 1.0.1",
+  "description": "Site da ONG Instituto Mãos que Ajudam (SPA)",
   "main": "index.js",
   "scripts": {
      "dev": "vite",
