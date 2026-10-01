@@ -8,34 +8,28 @@ por JavaScript dentro de `<main id="app">`.
 
 ## Como executar
 
-O `fetch()` não funciona abrindo o arquivo direto (`file://`). Use um servidor
-estático, por exemplo a extensão **Live Server** do VS Code (botão direito em
-`index.html` → *Open with Live Server*).
+Requer Node.js 20 ou mais.
+
+- **Desenvolvimento:** `npm install` e depois `npm run dev`.
+- **Build de produção:** `npm run build` gera a pasta `dist/` com CSS e JS minificados (Vite). Para conferir o resultado: `npm run preview`.
+
+O `fetch()` não funciona abrindo o arquivo direto (`file://`), e as telas ficam em `public/`, então use o servidor do Vite (`npm run dev`).
 
 ## Estrutura de diretórios
 
 ```
 projeto-ong/
 ├── index.html              → único ponto de entrada (cabeçalho, <main id="app"> vazio, rodapé)
-├── html/                   → templates de tela (fragmentos, sem <head>/<body>)
-│   ├── inicio.html
-│   ├── projetos.html
-│   ├── cadastro.html
-│   └── painel.html
+├── package.json            → scripts do Vite (dev, build, preview)
+├── vite.config.js          → configuração do Vite (base './')
+├── public/                 → copiado sem alteração para o dist/
+│   ├── html/               → templates de tela (fragmentos, sem <head>/<body>)
+│   └── imagens/            → fotos dos projetos e da página inicial
 ├── css/
 │   └── style.css           → Design System (variáveis, tipografia, componentes)
-├── imagens/                → fotos dos projetos e da página inicial
 └── js/
     ├── main.js             → mapa de rotas e inicialização
-    └── modules/
-        ├── router.js       → lê o hash da URL e decide qual template carregar
-        ├── templates.js    → busca o HTML (fetch) e injeta no #app
-        ├── menu.js         → menu hambúrguer e submenu
-        ├── mascaras.js     → máscaras de CPF, telefone e CEP
-        ├── validacao.js    → validação do formulário e mensagens de erro
-        ├── armazenamento.js→ leitura/gravação no localStorage
-        ├── doacao.js       → botão "Copiar chave Pix"
-        └── painel.js       → lista os cadastros salvos no painel
+    └── modules/            → router, templates, menu, máscaras, validação, armazenamento, doação e painel
 ```
 
 ## Navegação (roteamento por hash)
@@ -101,12 +95,15 @@ Exemplo: `docs: documentar o fluxo GitFlow no README`.
 
 ## Instalação local
 
-**Pré-requisitos:** navegador atual, Git e VS Code com a extensão Live Server. O projeto não tem dependências nem etapa de build.
+**Pré-requisitos:** navegador atual, Git e Node.js 20 ou mais.
 
 1. Clone o repositório: `git clone https://github.com/engeduardomanhani/projeto-ong-spa.git`
 2. Entre na pasta e abra no VS Code: `cd projeto-ong-spa` e `code .`
 3. Troque para a branch de desenvolvimento: `git switch develop`
-4. Abra o `index.html` com o Live Server (botão direito → Open with Live Server).
+4. Instale as dependências: `npm install`
+5. Inicie o servidor de desenvolvimento: `npm run dev` e abra o endereço mostrado (normalmente `http://localhost:5173`).
+
+**Build:** `npm run build` gera a pasta `dist/` e `npm run preview` serve o resultado.
 
 **Testes:** são manuais. Navegue pelo menu, envie o formulário e confira o painel.
 
