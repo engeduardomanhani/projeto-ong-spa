@@ -18,10 +18,15 @@
     acontece quando pessoas se unem em torno de um propósito comum.
   </p>
 
-  <img class="imagem-destaque"
-       src="imagens/voluntarios-evento.jpg"
-       alt="Voluntários de camiseta branca e vermelha grelhando alimentos durante um evento comunitário"
-       width="1200" height="800">
+  <picture>
+    <source type="image/webp"
+            srcset="imagens/voluntarios-evento-480.webp 480w, imagens/voluntarios-evento-960.webp 960w, imagens/voluntarios-evento-1200.webp 1200w"
+            sizes="100vw">
+    <img class="imagem-destaque"
+         src="imagens/voluntarios-evento.jpg"
+         alt="Voluntários de camiseta branca e vermelha grelhando alimentos durante um evento comunitário"
+         width="1200" height="800" decoding="async" fetchpriority="high">
+  </picture>
 
   <div class="grade-cartoes">
     <article class="cartao grid-item">
