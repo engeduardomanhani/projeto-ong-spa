@@ -1,0 +1,27 @@
+{
+  "name": "projeto-ong",
+  "version": "1.1.0",
+  "private": true,
+  "description": "Site da ONG Instituto Mãos que Ajudam (SPA)",
+  "main": "index.js",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/engeduardomanhani/projeto-ong-spa.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "module",
+  "bugs": {
+    "url": "https://github.com/engeduardomanhani/projeto-ong-spa/issues"
+  },
+  "homepage": "https://github.com/engeduardomanhani/projeto-ong-spa#readme",
+  "devDependencies": {
+    "vite": "^8.3.1"
+  }
+}
