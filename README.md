@@ -95,8 +95,6 @@ Exemplo: `docs: documentar o fluxo GitFlow no README`.
 
 ## Instalação local
 
-## Instalação local
-
 **Pré-requisitos:** navegador atual, Git e Node.js 20 ou mais.
 
 1. Clone o repositório: `git clone https://github.com/engeduardomanhani/projeto-ong-spa.git`
