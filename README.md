@@ -1,6 +1,6 @@
 # Instituto Mãos que Ajudam — Projeto SPA (JavaScript)
 
-**Versão:** 1.1.0
+**Versão:** 1.2.0
 
 Site da ONG transformado em uma **Single Page Application**: um único
 `index.html` com cabeçalho e rodapé fixos, e o conteúdo de cada tela é carregado
@@ -95,13 +95,21 @@ Exemplo: `docs: documentar o fluxo GitFlow no README`.
 
 ## Instalação local
 
-**Pré-requisitos:** navegador atual, Git e Node.js 20 ou mais.
+## Instalação local
+
+**Pré-requisitos:** navegador atual, Git, VS Code e Node.js (versão LTS atual).
 
 1. Clone o repositório: `git clone https://github.com/engeduardomanhani/projeto-ong-spa.git`
 2. Entre na pasta e abra no VS Code: `cd projeto-ong-spa` e `code .`
 3. Troque para a branch de desenvolvimento: `git switch develop`
 4. Instale as dependências: `npm install`
-5. Inicie o servidor de desenvolvimento: `npm run dev` e abra o endereço mostrado (normalmente `http://localhost:5173`).
+5. Rode em desenvolvimento: `npm run dev` e abra o endereço mostrado no terminal.
+
+**Scripts disponíveis:**
+- `npm run dev`: servidor de desenvolvimento (Vite)
+- `npm run build`: gera a versão minificada em `dist/`
+- `npm run preview`: serve a pasta `dist/` para testar a build
+- `npm run imagens`: gera as versões WebP (480, 960 e a largura original) em `public/imagens/`
 
 **Build:** `npm run build` gera a pasta `dist/` e `npm run preview` serve o resultado.
 
